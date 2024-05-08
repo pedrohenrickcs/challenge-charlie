@@ -1,7 +1,8 @@
+import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
 import './styles/globals.css'
 
 const Home = () => {
-  return <div>HOME</div>
+  return <SearchLocation />
 }
 
 export default Home
