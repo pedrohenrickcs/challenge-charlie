@@ -5,7 +5,7 @@ export const SearchLocation = () => {
         type="text"
         name="price"
         id="price"
-        className="block w-full py-6 px-4 text-3x1 outline-none text-textPrimary"
+        className="block w-full py-6 px-4 text-4xl outline-none text-textPrimary"
         placeholder=""
       />
     </div>
