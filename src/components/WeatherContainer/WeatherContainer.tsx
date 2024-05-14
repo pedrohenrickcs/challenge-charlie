@@ -4,9 +4,28 @@ import { openWeather } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
 import Sun from '../icons/Sun'
 
+export interface ContentWeather {
+  description: string
+}
+export interface ContentMain {
+  feels_like: number
+  humidity: number
+  pressure: number
+  weather: ContentWeather
+}
+export interface ContentWind {
+  speed: number
+}
+export interface Content {
+  main: ContentMain
+  weather: ContentWeather[]
+  wind: ContentWind
+}
+
 const WeatherContainer = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<Content>()
   const [isLoading, setIsLoading] = useState(true)
+  const [firstLetter, setFIrstLetter] = useState(true)
   // const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -14,6 +33,9 @@ const WeatherContainer = () => {
       try {
         const responseData = await openWeather()
         setData(responseData)
+        setFIrstLetter(
+          responseData.weather[0].description.charAt(0).toUpperCase(),
+        )
         setIsLoading(false)
       } catch (error) {
         // setError(error)
@@ -32,7 +54,7 @@ const WeatherContainer = () => {
   //   return <div>Ocorreu um erro: {error.message}</div>
   // }
 
-  console.log('data 2', data)
+  console.log('firstLetter', firstLetter)
 
   return (
     <div className="flex flex-row justify-around pt-16 pb-32 bg-background-yellow bg-opacity-80">
@@ -42,13 +64,23 @@ const WeatherContainer = () => {
       <div className="container text-textSecondary">
         <div>
           <p className="py-4 text-3xl">HOJE</p>
-          <p className="pb-8 text-4xl">{data?.main?.feels_like}</p>
+          {data?.main?.feels_like && (
+            <p className="pb-8 text-4xl">
+              {Math.trunc(data?.main?.feels_like)} Cº
+            </p>
+          )}
         </div>
 
-        <p className="pb-4 text-5xl">Ensolarado</p>
-        <p className="text-3xl leading-tight">Vento? NO 6.4Kmh</p>
-        <p className="text-3xl leading-tight">Humidade: 78%</p>
-        <p className="text-3xl leading-tight">Pressão: 1003hPA</p>
+        <p className="pb-4 text-5xl">
+          {`${firstLetter}${data?.weather[0].description.substring(1)}`}
+        </p>
+        <p className="text-3xl leading-tight">Vento: {data?.wind?.speed}Kmh</p>
+        <p className="text-3xl leading-tight">
+          Humidade: {data?.main?.humidity}%
+        </p>
+        <p className="text-3xl leading-tight">
+          Pressão: {data?.main?.pressure}hPA
+        </p>
       </div>
     </div>
   )
