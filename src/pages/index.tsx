@@ -1,12 +1,7 @@
 'use client'
 
 import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
-import {
-  ContentMain,
-  ContentWeather,
-  ContentWind,
-  WeatherContainer,
-} from '@/components/WeatherContainer/WeatherContainer'
+import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
 
 import '../styles/globals.css'
 import Background from '@/components/Background/Background'
@@ -14,47 +9,9 @@ import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
 import Loading from '@/components/Loading/Loading'
-
-export interface ContentSearch {
-  event: string
-  value: string
-}
-
-export interface Content {
-  main: ContentMain
-  weather: ContentWeather[]
-  wind: ContentWind
-}
-export interface Coordinates {
-  latitude: number
-  longitude: number
-}
-export interface Location {
-  city: string
-  state: string
-}
-
-export interface Value {
-  value: string
-}
-export interface ContentKey {
-  key: string
-  target: Value
-  event: string
-}
-
-export interface ContentImage {
-  images: []
-  url: string
-}
-
-export interface Image {
-  dataImage: ContentImage
-}
+import { ContentKey, Coordinates, Image } from '@/types/Home'
 
 const Home = ({ dataImage }: Image) => {
-  // console.log('dataImage', dataImage?.images[0]?.url)
-
   const [location, setLocation] = useState<Location>()
   const [city, setCity] = useState()
   const [data, setData] = useState()

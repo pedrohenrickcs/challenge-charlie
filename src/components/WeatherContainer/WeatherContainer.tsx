@@ -1,42 +1,12 @@
+import { ContentData } from '@/types/WeatherContainer'
 import Sun from '../../assets/icons/Sun'
-
-export interface ContentWeather {
-  description: string
-}
-export interface ContentMain {
-  feels_like: number
-  humidity: number
-  pressure: number
-  weather: ContentWeather
-}
-export interface ContentList {
-  main: ContentMain
-}
-export interface ContentWind {
-  speed: number
-}
-export interface Content {
-  list: ContentList[]
-  main: ContentMain
-  weather: ContentWeather[]
-  wind: ContentWind
-}
-export interface Coordinates {
-  latitude: number
-  longitude: number
-}
-
-export interface ContentData {
-  data: Content | undefined
-  dataNextDays: Content | undefined
-}
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
 
   return (
     <>
-      <div className="flex flex-row justify-around pt-16 pb-32 bg-background-yellow bg-opacity-80">
+      <div className="flex flex-row justify-around pt-4 pb-4 bg-background-yellow bg-opacity-80">
         <div className="container flex justify-center items-center">
           <Sun size={500} color="#fff" />
         </div>
