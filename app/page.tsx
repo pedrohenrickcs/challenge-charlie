@@ -12,7 +12,7 @@ import './styles/globals.css'
 import Background from '@/components/Background/Background'
 import { openCage } from '@/services/openCage'
 import { openWeather } from '@/services/openWeather'
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect } from 'react'
 
 export interface ContentSearch {
   event: string
@@ -21,6 +21,7 @@ export interface ContentSearch {
 export interface ContentKey {
   event: string
   key: string
+  target: ContentSearch
 }
 
 export interface ContentKeyValue {
@@ -85,8 +86,11 @@ const Home = () => {
     setCity(city)
   }
 
-  const handleKey = async (event) => {
-    if (event.key === 'Enter') {
+  const handleKey = async (event: {
+    key: string
+    target: { value: string }
+  }) => {
+    if (event?.key === 'Enter') {
       setData(await openWeather(event.target.value))
     }
   }

@@ -29,6 +29,8 @@ export interface ContentData {
 }
 
 export const WeatherContainer = ({ data }: ContentData) => {
+  const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
+
   return (
     <div className="flex flex-row justify-around pt-16 pb-32 bg-background-yellow bg-opacity-80">
       <div className="container flex justify-center items-center">
@@ -44,10 +46,7 @@ export const WeatherContainer = ({ data }: ContentData) => {
           )}
         </div>
 
-        <p className="pb-4 text-5xl">
-          {/* {`${firstLetter}${data?.weather[0].description.substring(1)}`} */}
-          {data?.weather[0].description}
-        </p>
+        <p className="pb-4 text-5xl">{firstLetter}</p>
         <p className="text-3xl leading-tight">Vento: {data?.wind?.speed}Kmh</p>
         <p className="text-3xl leading-tight">
           Humidade: {data?.main?.humidity}%
