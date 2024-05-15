@@ -16,6 +16,7 @@ const config: Config = {
         'background-yellow-secondary': '#b8860b',
         'background-gray': '#8492a6',
         'background-white': '#ffffff',
+        'fill-yellow': '#ffc82c',
         textPrimary: '#778899',
         textSecondary: '#ffffff',
       },

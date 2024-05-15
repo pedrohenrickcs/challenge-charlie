@@ -13,6 +13,7 @@ import Background from '@/components/Background/Background'
 import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
+import Loading from '@/components/Loading/Loading'
 
 export interface ContentSearch {
   event: string
@@ -97,7 +98,7 @@ const Home = () => {
   }
 
   if (isLoading) {
-    return <div>Carregando...</div>
+    return <Loading />
   }
 
   return (
