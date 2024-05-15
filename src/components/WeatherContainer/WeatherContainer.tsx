@@ -1,5 +1,3 @@
-'use client'
-
 import Sun from '../../assets/icons/Sun'
 
 export interface ContentWeather {

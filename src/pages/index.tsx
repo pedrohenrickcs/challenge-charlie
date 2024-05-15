@@ -8,7 +8,7 @@ import {
   WeatherContainer,
 } from '@/components/WeatherContainer/WeatherContainer'
 
-import './styles/globals.css'
+import '../styles/globals.css'
 import Background from '@/components/Background/Background'
 import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
@@ -43,7 +43,18 @@ export interface ContentKey {
   event: string
 }
 
-const Home = () => {
+export interface ContentImage {
+  images: []
+  url: string
+}
+
+export interface Image {
+  dataImage: ContentImage
+}
+
+const Home = ({ dataImage }: Image) => {
+  // console.log('dataImage', dataImage?.images[0]?.url)
+
   const [location, setLocation] = useState<Location>()
   const [city, setCity] = useState()
   const [data, setData] = useState()
@@ -103,7 +114,7 @@ const Home = () => {
 
   return (
     <>
-      <Background />
+      <Background data={dataImage} />
       <SearchLocation
         value={location}
         handleInputChange={handleInputChange}
@@ -112,6 +123,15 @@ const Home = () => {
       <WeatherContainer data={data} dataNextDays={dataNextDays} />
     </>
   )
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BING}`)
+  const dataImage = await res.json()
+
+  // Pass data to the page via props
+  return { props: { dataImage } }
 }
 
 export default Home
