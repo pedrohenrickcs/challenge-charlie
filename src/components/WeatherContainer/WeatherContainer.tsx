@@ -1,7 +1,5 @@
 'use client'
 
-import { openWeather } from '@/services/openWeather'
-import { useState, useEffect } from 'react'
 import Sun from '../icons/Sun'
 
 export interface ContentWeather {
@@ -21,41 +19,16 @@ export interface Content {
   weather: ContentWeather[]
   wind: ContentWind
 }
+export interface Coordinates {
+  latitude: number
+  longitude: number
+}
 
-const WeatherContainer = () => {
-  const [data, setData] = useState<Content>()
-  const [isLoading, setIsLoading] = useState(true)
-  const [firstLetter, setFIrstLetter] = useState(true)
-  // const [error, setError] = useState(null)
+export interface ContentData {
+  data: Content | undefined
+}
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const responseData = await openWeather()
-        setData(responseData)
-        setFIrstLetter(
-          responseData.weather[0].description.charAt(0).toUpperCase(),
-        )
-        setIsLoading(false)
-      } catch (error) {
-        // setError(error)
-        setIsLoading(false)
-      }
-    }
-
-    getData()
-  }, [])
-
-  if (isLoading) {
-    return <div>Carregando...</div>
-  }
-
-  // if (error) {
-  //   return <div>Ocorreu um erro: {error.message}</div>
-  // }
-
-  console.log('firstLetter', firstLetter)
-
+export const WeatherContainer = ({ data }: ContentData) => {
   return (
     <div className="flex flex-row justify-around pt-16 pb-32 bg-background-yellow bg-opacity-80">
       <div className="container flex justify-center items-center">
@@ -72,7 +45,8 @@ const WeatherContainer = () => {
         </div>
 
         <p className="pb-4 text-5xl">
-          {`${firstLetter}${data?.weather[0].description.substring(1)}`}
+          {/* {`${firstLetter}${data?.weather[0].description.substring(1)}`} */}
+          {data?.weather[0].description}
         </p>
         <p className="text-3xl leading-tight">Vento: {data?.wind?.speed}Kmh</p>
         <p className="text-3xl leading-tight">
@@ -85,5 +59,3 @@ const WeatherContainer = () => {
     </div>
   )
 }
-
-export default WeatherContainer
