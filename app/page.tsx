@@ -18,15 +18,6 @@ export interface ContentSearch {
   event: string
   value: string
 }
-export interface ContentKey {
-  event: string
-  key: string
-  target: ContentSearch
-}
-
-export interface ContentKeyValue {
-  event: ContentKey
-}
 
 export interface Content {
   main: ContentMain
@@ -40,6 +31,15 @@ export interface Coordinates {
 export interface Location {
   city: string
   state: string
+}
+
+export interface Value {
+  value: string
+}
+export interface ContentKey {
+  key: string
+  target: Value
+  event: string
 }
 
 const Home = () => {
@@ -72,7 +72,6 @@ const Home = () => {
           state: responseData.results[0].components.state_code,
         })
 
-        console.log('responseData', responseData)
         setData(await openWeather(responseData.results[0].components.city))
         setDataNextDays(
           await openWeatherNextDays(responseData.results[0].components.city),
@@ -90,10 +89,7 @@ const Home = () => {
     setCity(city)
   }
 
-  const handleKey = async (event: {
-    key: string
-    target: { value: string }
-  }) => {
+  const handleKey = async (event: ContentKey) => {
     if (event?.key === 'Enter') {
       setData(await openWeather(event.target.value))
       setDataNextDays(await openWeatherNextDays(event.target.value))

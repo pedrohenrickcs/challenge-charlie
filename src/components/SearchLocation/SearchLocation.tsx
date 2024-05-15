@@ -8,14 +8,10 @@ export interface Location {
 export interface Content {
   value: Location | undefined
   handleInputChange(): void
-  handleKey: any
+  handleKey(): void
 }
 
-export const SearchLocation = ({
-  value,
-  handleInputChange,
-  handleKey,
-}: Content) => {
+export const SearchLocation = ({ handleInputChange, handleKey }: Content) => {
   return (
     <div className="relative mt-2 rounded-md shadow-sm">
       <input

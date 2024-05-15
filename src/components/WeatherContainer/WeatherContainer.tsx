@@ -11,10 +11,14 @@ export interface ContentMain {
   pressure: number
   weather: ContentWeather
 }
+export interface ContentList {
+  main: ContentMain
+}
 export interface ContentWind {
   speed: number
 }
 export interface Content {
+  list: ContentList[]
   main: ContentMain
   weather: ContentWeather[]
   wind: ContentWind
@@ -31,7 +35,6 @@ export interface ContentData {
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
-  console.log('dataa', dataNextDays)
 
   return (
     <>
