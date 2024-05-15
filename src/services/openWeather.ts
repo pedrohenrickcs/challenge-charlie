@@ -1,8 +1,6 @@
 import { api } from './api'
 
 export const openWeather = async (city: string) => {
-  console.log('CITY =>', city)
-
   try {
     const response = await api.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=pt_br&APPID=772920597e4ec8f00de8d376dfb3f094&units=metric`,
@@ -13,10 +11,10 @@ export const openWeather = async (city: string) => {
   }
 }
 
-export const openWeatherNextDays = async () => {
+export const openWeatherNextDays = async (city: string) => {
   try {
     const response = await api.get(
-      'https://api.openweathermap.org/data/2.5/forecast?q=Sao Paulo&lang=pt_br&APPID=772920597e4ec8f00de8d376dfb3f094&units=metric',
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=pt_br&APPID=772920597e4ec8f00de8d376dfb3f094&units=metric`,
     )
     return response.data
   } catch (error) {

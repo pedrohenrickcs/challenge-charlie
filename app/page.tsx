@@ -11,7 +11,7 @@ import {
 import './styles/globals.css'
 import Background from '@/components/Background/Background'
 import { openCage } from '@/services/openCage'
-import { openWeather } from '@/services/openWeather'
+import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
 
 export interface ContentSearch {
@@ -46,6 +46,7 @@ const Home = () => {
   const [location, setLocation] = useState<Location>()
   const [city, setCity] = useState()
   const [data, setData] = useState()
+  const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [coordinates, setCoordinates] = useState<Coordinates>()
 
@@ -73,6 +74,9 @@ const Home = () => {
 
         console.log('responseData', responseData)
         setData(await openWeather(responseData.results[0].components.city))
+        setDataNextDays(
+          await openWeatherNextDays(responseData.results[0].components.city),
+        )
         setIsLoading(false)
       } catch (error) {
         setIsLoading(false)
@@ -92,6 +96,7 @@ const Home = () => {
   }) => {
     if (event?.key === 'Enter') {
       setData(await openWeather(event.target.value))
+      setDataNextDays(await openWeatherNextDays(event.target.value))
     }
   }
 
@@ -107,7 +112,7 @@ const Home = () => {
         handleInputChange={handleInputChange}
         handleKey={handleKey}
       />
-      <WeatherContainer data={data} />
+      <WeatherContainer data={data} dataNextDays={dataNextDays} />
     </>
   )
 }
