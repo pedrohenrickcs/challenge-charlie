@@ -3,8 +3,8 @@ export interface Location {
   state: string
 }
 
-export interface Content {
-  value: Location | undefined
+export interface ContentSearch {
+  value: Location
   handleInputChange(): void
   handleKey(): void
 }

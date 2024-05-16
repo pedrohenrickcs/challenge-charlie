@@ -1,6 +1,9 @@
-import { Content } from '@/types/SearchLocation'
+import { ContentSearch } from '@/types/SearchLocation'
 
-export const SearchLocation = ({ handleInputChange, handleKey }: Content) => {
+export const SearchLocation = ({
+  handleInputChange,
+  handleKey,
+}: ContentSearch) => {
   return (
     <div className="relative mt-2 rounded-md shadow-sm">
       <input

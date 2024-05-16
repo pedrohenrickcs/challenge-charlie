@@ -9,9 +9,9 @@ import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
 import Loading from '@/components/Loading/Loading'
-import { ContentKey, Coordinates, Image } from '@/types/Home'
+import { ContentKey, Coordinates, ContentImage, Location } from '@/types/Home'
 
-const Home = ({ dataImage }: Image) => {
+const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
   const [city, setCity] = useState()
   const [data, setData] = useState()
@@ -65,9 +65,7 @@ const Home = ({ dataImage }: Image) => {
     }
   }
 
-  if (isLoading) {
-    return <Loading />
-  }
+  if (isLoading) return <Loading />
 
   return (
     <>
@@ -83,11 +81,9 @@ const Home = ({ dataImage }: Image) => {
 }
 
 export async function getServerSideProps() {
-  // Fetch data from external API
   const res = await fetch(`${process.env.NEXT_PUBLIC_BING}`)
   const dataImage = await res.json()
 
-  // Pass data to the page via props
   return { props: { dataImage } }
 }
 
