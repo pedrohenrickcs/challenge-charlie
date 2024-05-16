@@ -1,5 +1,6 @@
 export interface ContentWeather {
   description: string
+  icon: string
 }
 export interface ContentMain {
   feels_like: number
@@ -21,6 +22,6 @@ export interface Content {
 }
 
 export interface ContentData {
-  data: Content | undefined
-  dataNextDays: Content | undefined
+  data: Content
+  dataNextDays: Content
 }

@@ -1,9 +1,11 @@
 import { ContentData } from '@/types/WeatherContainer'
-import Sun from '../../assets/icons/Sun'
+import Icon from '../../assets/icons/icons'
 import { BackgroundWeather } from '@/utils/BackgroundWeather'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
+
+  console.log('data?.weather[0]?.icon', data?.weather[0]?.icon)
 
   return (
     <>
@@ -11,7 +13,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
         className={`flex flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
       >
         <div className="container flex justify-center items-center">
-          <Sun size={500} color="#fff" />
+          <Icon name={data?.weather[0]?.icon} size={500} color="#fff" />
         </div>
         <div className="container text-textSecondary">
           <div>
