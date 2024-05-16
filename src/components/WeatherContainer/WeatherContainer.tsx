@@ -28,7 +28,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
             <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
               <p
-                className="pb-8 text-4xl"
+                className="pb-8 text-4xl cursor-pointer"
                 onClick={() => {
                   setTemp((currentState) => !currentState)
                 }}
