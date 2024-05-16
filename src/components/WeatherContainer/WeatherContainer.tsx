@@ -1,12 +1,15 @@
 import { ContentData } from '@/types/WeatherContainer'
 import Sun from '../../assets/icons/Sun'
+import { BackgroundWeather } from '@/utils/BackgroundWeather'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
 
   return (
     <>
-      <div className="flex flex-row justify-around pt-4 pb-4 bg-background-yellow bg-opacity-80">
+      <div
+        className={`flex flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
+      >
         <div className="container flex justify-center items-center">
           <Sun size={500} color="#fff" />
         </div>
@@ -33,7 +36,9 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-around bg-background-yellow bg-opacity-100">
+      <div
+        className={`flex flex-row justify-around bg-opacity-80 ${BackgroundWeather(data?.main?.feels_like)}`}
+      >
         <div className="container flex justify-center items-center">
           {/* <Sun size={500} color="#fff" /> */}
         </div>
@@ -49,7 +54,9 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-around bg-background-yellow-secondary bg-opacity-100">
+      <div
+        className={`flex flex-row justify-around bg-opacity-100 ${BackgroundWeather(data?.main?.feels_like)}`}
+      >
         <div className="container flex justify-center items-center">
           {/* <Sun size={500} color="#fff" /> */}
         </div>
