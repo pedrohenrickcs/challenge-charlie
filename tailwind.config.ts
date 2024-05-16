@@ -19,6 +19,9 @@ const config: Config = {
         textPrimary: '#778899',
         textSecondary: '#ffffff',
       },
+      zIndex: {
+        '-10': '-10',
+      },
     },
   },
   plugins: [],

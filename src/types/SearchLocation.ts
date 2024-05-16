@@ -4,7 +4,7 @@ export interface Location {
 }
 
 export interface ContentSearch {
-  value: Location
+  defaultValue: Location
   handleInputChange(): void
   handleKey(): void
 }

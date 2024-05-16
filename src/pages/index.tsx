@@ -1,15 +1,17 @@
 'use client'
 
-import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
-
 import '../styles/globals.css'
+
+import { useState, useEffect } from 'react'
+
+import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
 import Background from '@/components/Background/Background'
+import { Weather } from '@/components/WeatherContainer'
+import Loading from '@/components/Loading/Loading'
+
 import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
-import { useState, useEffect } from 'react'
-import Loading from '@/components/Loading/Loading'
 import { ContentKey, Coordinates, ContentImage, Location } from '@/types/Home'
-import { Weather } from '@/components/WeatherContainer'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
@@ -71,7 +73,7 @@ const Home = ({ dataImage }: ContentImage) => {
     <>
       <Background data={dataImage} />
       <SearchLocation
-        value={location}
+        defaultValue={location}
         handleInputChange={handleInputChange}
         handleKey={handleKey}
       />
