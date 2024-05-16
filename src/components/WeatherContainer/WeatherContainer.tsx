@@ -1,21 +1,24 @@
 import { ContentData } from '@/types/WeatherContainer'
 import Icon from '../../assets/icons/icons'
-import { BackgroundWeather } from '@/utils/BackgroundWeather'
+import { BackgroundWeather } from '@/utils/backgroundWeather'
+import { isMobile } from '@/utils/getDevice'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
 
-  console.log('data?.weather[0]?.icon', data?.weather[0]?.icon)
-
   return (
     <>
       <div
-        className={`flex flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
+        className={`flex flex-col md:flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
       >
         <div className="container flex justify-center items-center">
-          <Icon name={data?.weather[0]?.icon} size={500} color="#fff" />
+          <Icon
+            name={data?.weather[0]?.icon}
+            size={isMobile() ? 300 : 400}
+            color="#fff"
+          />
         </div>
-        <div className="container text-textSecondary">
+        <div className="container text-textSecondary text-center md:text-left font-medium">
           <div>
             <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
@@ -39,13 +42,10 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
       </div>
 
       <div
-        className={`flex flex-row justify-around bg-opacity-80 ${BackgroundWeather(data?.main?.feels_like)}`}
+        className={`flex flex-row justify-around md:justify-end bg-opacity-80 ${BackgroundWeather(data?.main?.feels_like)}`}
       >
-        <div className="container flex justify-center items-center">
-          {/* <Sun size={500} color="#fff" /> */}
-        </div>
-        <div className="container text-textSecondary">
-          <div>
+        <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
+          <div className="w-full">
             <p className="py-4 text-3xl">Amanhã</p>
             {dataNextDays?.list[0].main.feels_like && (
               <p className="pb-8 text-4xl">
@@ -57,13 +57,10 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
       </div>
 
       <div
-        className={`flex flex-row justify-around bg-opacity-100 ${BackgroundWeather(data?.main?.feels_like)}`}
+        className={`flex flex-row justify-around md:justify-end bg-opacity-100 ${BackgroundWeather(data?.main?.feels_like)}`}
       >
-        <div className="container flex justify-center items-center">
-          {/* <Sun size={500} color="#fff" /> */}
-        </div>
-        <div className="container text-textSecondary">
-          <div>
+        <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
+          <div className="w-full">
             <p className="py-4 text-3xl">Depois de amanhã</p>
             {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl">

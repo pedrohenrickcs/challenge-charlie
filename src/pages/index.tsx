@@ -1,7 +1,6 @@
 'use client'
 
 import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
-import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
 
 import '../styles/globals.css'
 import Background from '@/components/Background/Background'
@@ -10,6 +9,7 @@ import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { useState, useEffect } from 'react'
 import Loading from '@/components/Loading/Loading'
 import { ContentKey, Coordinates, ContentImage, Location } from '@/types/Home'
+import { Weather } from '@/components/WeatherContainer'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
@@ -75,7 +75,7 @@ const Home = ({ dataImage }: ContentImage) => {
         handleInputChange={handleInputChange}
         handleKey={handleKey}
       />
-      <WeatherContainer data={data} dataNextDays={dataNextDays} />
+      <Weather.WeatherContainer data={data} dataNextDays={dataNextDays} />
     </>
   )
 }
