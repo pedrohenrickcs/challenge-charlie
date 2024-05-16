@@ -2,9 +2,14 @@ import { ContentData } from '@/types/WeatherContainer'
 import Icon from '../../assets/icons/icons'
 import { BackgroundWeather } from '@/utils/backgroundWeather'
 import { isMobile } from '@/utils/getDevice'
+import { useState } from 'react'
+import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
+  const [temp, setTemp] = useState('Cº')
+  const celsiusTemperature = `${Math.trunc(data?.main?.feels_like)} Cº`
+  const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
   return (
     <>
@@ -22,8 +27,13 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
           <div>
             <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
-              <p className="pb-8 text-4xl">
-                {Math.trunc(data?.main?.feels_like)} Cº
+              <p
+                className="pb-8 text-4xl"
+                onClick={() => {
+                  setTemp((currentState) => !currentState)
+                }}
+              >
+                {temp ? celsiusTemperature : fahrenheitTemperature}
               </p>
             )}
           </div>
