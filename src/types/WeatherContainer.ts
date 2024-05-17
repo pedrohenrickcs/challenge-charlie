@@ -22,6 +22,6 @@ export interface Content {
 }
 
 export interface ContentData {
-  data: Content
-  dataNextDays: Content
+  data: Content | undefined
+  dataNextDays: Content | undefined
 }

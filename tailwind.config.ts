@@ -13,6 +13,7 @@ const config: Config = {
         background: '#87cefa',
         'background-blue': '#87ceeb',
         'background-yellow': '#ffc82c',
+        'background-red': '#b22222',
         'background-gray': '#8492a6',
         'background-white': '#ffffff',
         'fill-yellow': '#ffc82c',

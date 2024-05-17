@@ -8,7 +8,8 @@ import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
   const [temp, setTemp] = useState('Cº')
-  const celsiusTemperature = `${Math.trunc(data?.main?.feels_like)} Cº`
+  const celsiusTemperature: number | string =
+    `${Math.trunc(data?.main && data?.main?.feels_like)} Cº`
   const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
   return (

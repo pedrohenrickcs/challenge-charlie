@@ -8,25 +8,27 @@ import Thunderstorm from './thunderstorm'
 import Snow from './snow'
 import Mist from './mist'
 
-const Icon = ({ name, size, color }) => {
+import { IconType } from '@/types/Icon'
+
+const Icon = ({ name, size, color }: IconType) => {
   switch (name) {
-    case '01d':
+    case '01d' || '01n':
       return <ClearSky size={size} color={color} />
-    case '02d':
+    case '02d' || '02n':
       return <FewClouds size={size} color={color} />
-    case '03d':
+    case '03d' || '03n':
       return <ScatteredClouds size={size} color={color} />
-    case '04d':
+    case '04d' || '04n':
       return <BrokenClouds size={size} color={color} />
-    case '09d':
+    case '09d' || '09n':
       return <ShowerRain size={size} color={color} />
-    case '10d':
+    case '10d' || '10n':
       return <Rain size={size} color={color} />
-    case '11d':
+    case '11d' || '11n':
       return <Thunderstorm size={size} color={color} />
-    case '13d':
+    case '13d' || '13n':
       return <Snow size={size} color={color} />
-    case '50d':
+    case '50d' || '50n':
       return <Mist size={size} color={color} />
     default:
       return null
