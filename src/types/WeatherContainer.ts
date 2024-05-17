@@ -3,7 +3,7 @@ export interface ContentWeather {
   icon: string
 }
 export interface ContentMain {
-  feels_like: number
+  feels_like: number | undefined
   humidity: number
   pressure: number
   weather: ContentWeather

@@ -1,5 +1,7 @@
+'use client'
+
+import Layout from '@/app/Layout'
 // import '../styles/global.css'
-import Layout from '@/app/layout'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {

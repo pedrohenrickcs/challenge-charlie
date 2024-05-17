@@ -1,15 +1,15 @@
 import { ContentData } from '@/types/WeatherContainer'
-import Icon from '../../assets/icons/icons'
 import { BackgroundWeather } from '@/utils/backgroundWeather'
+import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
 import { isMobile } from '@/utils/getDevice'
 import { useState } from 'react'
-import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
+import Icon from '../../assets/icons/icons'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
-  const [temp, setTemp] = useState('Cº')
+  const [temp, setTemp] = useState<string | boolean>('Cº')
   const celsiusTemperature: number | string =
-    `${Math.trunc(data?.main && data?.main?.feels_like)} Cº`
+    `${Math.trunc(data?.main?.feels_like)} Cº`
   const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
   return (
@@ -39,7 +39,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
             )}
           </div>
 
-          <p className="pb-4 text-5xl">{firstLetter}</p>
+          <h1 className="pb-4 text-5xl">{firstLetter}</h1>
           <p className="text-3xl leading-tight">
             Vento: {data?.wind?.speed}Kmh
           </p>

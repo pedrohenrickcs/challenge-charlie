@@ -1,20 +1,21 @@
 import '../styles/globals.css'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
 import Background from '@/components/Background/Background'
 import Loading from '@/components/Loading/Loading'
 
+import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
+import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
 import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
-import { ContentKey, Coordinates, ContentImage, Location } from '@/types/Home'
-import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
+import { ContentImage, ContentKey, Coordinates, Location } from '@/types/Home'
+import { ContentData } from '@/types/WeatherContainer'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
   const [city, setCity] = useState()
-  const [data, setData] = useState()
+  const [data, setData] = useState<ContentData>()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [coordinates, setCoordinates] = useState<Coordinates>()
