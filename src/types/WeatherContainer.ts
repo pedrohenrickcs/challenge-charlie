@@ -3,7 +3,7 @@ export interface ContentWeather {
   icon: string
 }
 export interface ContentMain {
-  feels_like: number | undefined
+  feels_like: number
   humidity: number
   pressure: number
   weather: ContentWeather
@@ -16,12 +16,12 @@ export interface ContentWind {
 }
 export interface Content {
   list: ContentList[]
-  main: ContentMain
+  main: ContentMain[]
   weather: ContentWeather[]
   wind: ContentWind
 }
 
 export interface ContentData {
-  data: Content | undefined
+  data: ContentList
   dataNextDays: Content | undefined
 }

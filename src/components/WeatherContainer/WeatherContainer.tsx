@@ -1,9 +1,10 @@
-import { ContentData } from '@/types/WeatherContainer'
+// import { ContentData } from '@/types/WeatherContainer'
 import { BackgroundWeather } from '@/utils/backgroundWeather'
 import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
 import { isMobile } from '@/utils/getDevice'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Icon from '../../assets/icons/icons'
+import { ContentData } from '@/types/WeatherContainer'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
@@ -12,15 +13,11 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
     `${Math.trunc(data?.main?.feels_like)} Cº`
   const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
-  const [tempTomorrow, setTempTomorrow] = useState<string | boolean>('Cº')
-  const celsiusTemperatureTomorrow: number | string =
-    `${Math.trunc(dataNextDays?.list[0].main.feels_like)} Cº`
-  const fahrenheitTemperatureTomorrow = `${celsiusToFahrenheit(Math.trunc(dataNextDays?.list[0].main.feels_like))} Fº`
-  console.log('dfdfdf', dataNextDays)
-
   const toggleTemp = () => {
     setTemp((currentState) => !currentState)
   }
+
+  console.log('data', data)
 
   return (
     <>

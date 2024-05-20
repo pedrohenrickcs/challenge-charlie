@@ -5,6 +5,5 @@ export interface Location {
 
 export interface ContentSearch {
   defaultValue: Location | undefined
-  handleInputChange(): void
-  handleKey: any
+  handleKey: undefined
 }
