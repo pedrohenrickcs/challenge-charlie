@@ -1,5 +1,5 @@
-import Icon from '@/assets/icons/icons'
-import { ContentSearch } from '@/types/SearchLocation'
+import Icon from '../../assets/icons/icons'
+import { ContentSearch } from '../..//types/SearchLocation'
 
 export const SearchLocation: React.FC<ContentSearch> = ({
   defaultValue,

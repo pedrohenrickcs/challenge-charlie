@@ -1,10 +1,9 @@
-// import { ContentData } from '@/types/WeatherContainer'
-import { BackgroundWeather } from '@/utils/backgroundWeather'
-import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
-import { isMobile } from '@/utils/getDevice'
+import { BackgroundWeather } from '../../utils/backgroundWeather'
+import { celsiusToFahrenheit } from '../../utils/celsiusToFahrenheit'
+import { isMobile } from '../../utils/getDevice'
 import React, { useState } from 'react'
 import Icon from '../../assets/icons/icons'
-import { ContentData } from '@/types/WeatherContainer'
+import { ContentData } from '../../types/WeatherContainer'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`

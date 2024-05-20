@@ -2,14 +2,14 @@ import '../styles/globals.css'
 
 import { useEffect, useState } from 'react'
 
-import Background from '@/components/Background/Background'
-import Loading from '@/components/Loading/Loading'
+import Background from '../components/Background/Background'
+import Loading from '../components/Loading/Loading'
 
-import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
-import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
-import { openCage } from '@/services/openCage'
-import { openWeather, openWeatherNextDays } from '@/services/openWeather'
-import { ContentImage, Coordinates, Location } from '@/types/Home'
+import { SearchLocation } from '../components/SearchLocation/SearchLocation'
+import { WeatherContainer } from '../components/WeatherContainer/WeatherContainer'
+import { openCage } from '../services/openCage'
+import { openWeather, openWeatherNextDays } from '../services/openWeather'
+import { ContentImage, Coordinates, Location } from '../types/Home'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
