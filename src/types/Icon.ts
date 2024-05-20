@@ -1,5 +1,5 @@
 export interface IconType {
-  name: string
+  name?: string
   size: number
   color: string
   className?: string

@@ -9,12 +9,11 @@ import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
 import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
 import { openCage } from '@/services/openCage'
 import { openWeather, openWeatherNextDays } from '@/services/openWeather'
-import { ContentImage, ContentKey, Coordinates, Location } from '@/types/Home'
-import { ContentData } from '@/types/WeatherContainer'
+import { ContentImage, Coordinates, Location } from '@/types/Home'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
-  const [data, setData] = useState<ContentData>()
+  const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [coordinates, setCoordinates] = useState<Coordinates>()
@@ -33,28 +32,23 @@ const Home = ({ dataImage }: ContentImage) => {
       const getData = async () => {
         try {
           const responseData = await openCage(
-            coordinates?.latitude,
-            coordinates?.longitude,
+            coordinates.latitude,
+            coordinates.longitude,
           )
+          const city = responseData.results[0].components.city
+          const state = responseData.results[0].components.state_code
 
-          console.log('sdfdsf')
+          setLocation({ city, state })
 
-          setData(await openWeather(responseData?.results[0]?.components.city))
-          setDataNextDays(
-            await openWeatherNextDays(
-              responseData?.results[0]?.components.city,
-            ),
-          )
+          const weatherData = await openWeather(city)
+          setData(weatherData)
 
-          setLocation({
-            city: responseData.results[0].components.city,
-            state: responseData.results[0].components.state_code,
-          })
+          const weatherNextDaysData = await openWeatherNextDays(city)
+          setDataNextDays(weatherNextDaysData)
 
           setIsLoading(false)
         } catch (error) {
-          console.log('erro', error)
-
+          console.error(error)
           setIsLoading(false)
         }
       }
@@ -62,18 +56,19 @@ const Home = ({ dataImage }: ContentImage) => {
     }
   }, [coordinates])
 
-  const handleKey = async (event: ContentKey) => {
+  const handleKey = async (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): Promise<void> => {
     if (event?.key === 'Enter') {
-      if (coordinates) {
-        setData(await openWeather(event.target.value))
-        setDataNextDays(await openWeatherNextDays(event.target.value))
-      }
+      const target = event.target as HTMLInputElement
+      const location = target.value
+
+      setData(await openWeather(location))
+      setDataNextDays(await openWeatherNextDays(location))
     }
   }
 
   if (isLoading) return <Loading />
-
-  console.log('data', data)
 
   return (
     <>

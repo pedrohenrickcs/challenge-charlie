@@ -5,5 +5,7 @@ export interface Location {
 
 export interface ContentSearch {
   defaultValue: Location | undefined
-  handleKey: undefined
+  handleKey: (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => Promise<void> | void
 }

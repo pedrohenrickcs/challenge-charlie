@@ -13,7 +13,10 @@ export interface Value {
 export interface ContentKey {
   key: string
   target: Value
-  event: string
+  event: React.KeyboardEvent<HTMLInputElement>
+  handleKey: (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => Promise<void> | undefined
 }
 
 export interface Image {

@@ -7,17 +7,21 @@ import Icon from '../../assets/icons/icons'
 import { ContentData } from '@/types/WeatherContainer'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
+  console.log('dataNextDays', dataNextDays)
+
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
+  const feelsLikeCelsius = data?.main?.feels_like
+
   const [temp, setTemp] = useState<string | boolean>('Cº')
-  const celsiusTemperature: number | string =
-    `${Math.trunc(data?.main?.feels_like)} Cº`
-  const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
+  const celsiusTemperature =
+    feelsLikeCelsius && `${Math.trunc(data?.main?.feels_like)} Cº`
+  const fahrenheitTemperature =
+    feelsLikeCelsius &&
+    `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
   const toggleTemp = () => {
     setTemp((currentState) => !currentState)
   }
-
-  console.log('data', data)
 
   return (
     <>

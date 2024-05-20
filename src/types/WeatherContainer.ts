@@ -1,27 +1,47 @@
-export interface ContentWeather {
+export interface Weather {
+  id: number
+  main: string
   description: string
   icon: string
 }
-export interface ContentMain {
+
+export interface Main {
+  temp: number
   feels_like: number
-  humidity: number
   pressure: number
-  weather: ContentWeather
+  humidity: number
 }
-export interface ContentList {
-  main: ContentMain
-}
-export interface ContentWind {
+
+export interface Wind {
   speed: number
+  deg: number
 }
-export interface Content {
-  list: ContentList[]
-  main: ContentMain[]
-  weather: ContentWeather[]
-  wind: ContentWind
+
+export interface RootContent {
+  weather: Weather[]
+  main: Main
+  wind: Wind
+}
+
+export interface List {
+  main: Main
+  weather: Weather[]
+  wind: Wind
+}
+
+export interface Coord {
+  lat: number
+  lon: number
+}
+
+export interface RootNextDays {
+  cod: string
+  message: number
+  cnt: number
+  list: List[]
 }
 
 export interface ContentData {
-  data: ContentList
-  dataNextDays: Content | undefined
+  data: RootContent
+  dataNextDays: RootNextDays
 }

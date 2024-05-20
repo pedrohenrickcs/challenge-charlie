@@ -1,7 +1,10 @@
 import Icon from '@/assets/icons/icons'
 import { ContentSearch } from '@/types/SearchLocation'
 
-export const SearchLocation = ({ handleKey, defaultValue }: ContentSearch) => {
+export const SearchLocation: React.FC<ContentSearch> = ({
+  defaultValue,
+  handleKey,
+}: ContentSearch) => {
   return (
     <div className="relative mt-2 rounded-md shadow-sm">
       <Icon name="compass" size={90} color="#8492a6" className="absolute p-4" />
