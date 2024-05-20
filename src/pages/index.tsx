@@ -15,8 +15,10 @@ const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
   const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [coordinates, setCoordinates] = useState<Coordinates>()
+
+  console.log('data', data)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {

@@ -7,7 +7,8 @@ export interface Weather {
 
 export interface Main {
   temp: number
-  feels_like: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  feels_like?: number | any
   pressure: number
   humidity: number
 }
@@ -42,6 +43,6 @@ export interface RootNextDays {
 }
 
 export interface ContentData {
-  data: RootContent
-  dataNextDays: RootNextDays
+  data?: RootContent
+  dataNextDays?: RootNextDays
 }
