@@ -1,19 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-'use client'
 
-const Background = () => {
+import { ContentBackgroundData } from '@/types/Background'
+
+const Background = (data: ContentBackgroundData) => {
   return (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <>
       <img
-        src="./bg.jpg"
-        alt="BG"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: -1,
-        }}
+        src={`${process.env.NEXT_PUBLIC_BING_URL}${data?.data?.images[0].url}`}
+        alt={data?.data?.images[0].title}
+        className="fixed top-0 left-0 w-full h-full -z-10"
       />
     </>
   )

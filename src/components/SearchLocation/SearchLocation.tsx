@@ -1,31 +1,22 @@
-'use client'
+import Icon from '@/assets/icons/icons'
+import { ContentSearch } from '@/types/SearchLocation'
 
-export interface Location {
-  city: string
-  state: string
-}
-
-export interface Content {
-  value: Location | undefined
-  handleInputChange(): void
-  handleKey: any
-}
-
-export const SearchLocation = ({
-  value,
-  handleInputChange,
+export const SearchLocation: React.FC<ContentSearch> = ({
+  defaultValue,
   handleKey,
-}: Content) => {
+}: ContentSearch) => {
   return (
     <div className="relative mt-2 rounded-md shadow-sm">
+      <Icon name="compass" size={90} color="#8492a6" className="absolute p-4" />
       <input
         type="text"
         name="price"
         id="price"
-        className="block w-full py-6 px-4 text-4xl outline-none text-textPrimary font-medium"
+        className="block w-full py-6 pr-4 pl-24 text-4xl outline-none text-textPrimary font-medium"
         placeholder=""
-        // value={`${value?.city}, ${value?.state}`}
-        onChange={handleInputChange}
+        // onChange={handleInputChange}
+        defaultValue={`${defaultValue?.city}, ${defaultValue?.state}`}
+        // value={value}
         onKeyUp={handleKey}
       />
     </div>

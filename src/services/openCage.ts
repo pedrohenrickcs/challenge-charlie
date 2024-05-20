@@ -1,12 +1,9 @@
 import { api } from './api'
 
-export const openCage = async (
-  lat: number | undefined,
-  lon: number | undefined,
-) => {
+export const openCage = async (lat: number, lon: number) => {
   try {
     const response = await api.get(
-      `https://api.opencagedata.com/geocode/v1/json?q=${lat},${lon}&key=66eaa7a9d980418884127f856962115d&language=pt_br`,
+      `${process.env.NEXT_PUBLIC_OPEN_CAGE}?q=${lat},${lon}&key=${process.env.NEXT_PUBLIC_OPEN_CAGE_API_KEY}&language=pt_br`,
     )
     return response.data
   } catch (error) {

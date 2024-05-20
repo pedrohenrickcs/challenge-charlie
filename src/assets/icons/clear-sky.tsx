@@ -1,4 +1,4 @@
-const Sun = ({ size = 24, color = 'currentColor', ...rest }) => {
+const ClearSky = ({ size = 24, color = 'currentColor', ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,43 +12,6 @@ const Sun = ({ size = 24, color = 'currentColor', ...rest }) => {
       xmlSpace="preserve"
       {...rest}
     >
-      <g>
-        <g>
-          <g fill="none" strokeMiterlimit="10">
-            <path d="M0 0H512V512H0z"></path>
-            <path d="M0 480L512 480"></path>
-            <path d="M0 448L512 448"></path>
-            <path d="M0 416L512 416"></path>
-            <path d="M0 384L512 384"></path>
-            <path d="M0 352L512 352"></path>
-            <path d="M0 320L512 320"></path>
-            <path d="M0 288L512 288"></path>
-            <path d="M0 256L512 256"></path>
-            <path d="M0 224L512 224"></path>
-            <path d="M0 192L512 192"></path>
-            <path d="M0 160L512 160"></path>
-            <path d="M0 128L512 128"></path>
-            <path d="M0 96L512 96"></path>
-            <path d="M0 64L512 64"></path>
-            <path d="M0 32L512 32"></path>
-            <path d="M480 0L480 512"></path>
-            <path d="M448 0L448 512"></path>
-            <path d="M416 0L416 512"></path>
-            <path d="M384 0L384 512"></path>
-            <path d="M352 0L352 512"></path>
-            <path d="M320 0L320 512"></path>
-            <path d="M288 0L288 512"></path>
-            <path d="M256 0L256 512"></path>
-            <path d="M224 0L224 512"></path>
-            <path d="M192 0L192 512"></path>
-            <path d="M160 0L160 512"></path>
-            <path d="M128 0L128 512"></path>
-            <path d="M96 0L96 512"></path>
-            <path d="M64 0L64 512"></path>
-            <path d="M32 0L32 512"></path>
-          </g>
-        </g>
-      </g>
       <path
         fill={color}
         fillRule="evenodd"
@@ -59,4 +22,4 @@ const Sun = ({ size = 24, color = 'currentColor', ...rest }) => {
   )
 }
 
-export default Sun
+export default ClearSky
