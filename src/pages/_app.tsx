@@ -1,4 +1,4 @@
-import Layout from '../app/Layout'
+import Layout from '@/app/Layout'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {

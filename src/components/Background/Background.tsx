@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { ContentBackgroundData } from '../../types/Background'
+import { ContentBackgroundData } from '@/types/Background'
 
 const Background = (data: ContentBackgroundData) => {
   return (

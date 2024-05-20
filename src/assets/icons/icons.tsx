@@ -9,9 +9,10 @@ import Snow from './snow'
 import Mist from './mist'
 import Compass from './compass'
 
-import { IconType } from '../../types/Icon'
+import { IconType } from '@/types/Icon'
 
 const Icon = ({ name, size, color, className }: IconType) => {
+
   switch (name) {
     case '01d' || '01n':
       return <ClearSky size={size} color={color} className={className} />
