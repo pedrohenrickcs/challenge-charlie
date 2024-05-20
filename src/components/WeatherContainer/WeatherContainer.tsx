@@ -12,6 +12,16 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
     `${Math.trunc(data?.main?.feels_like)} Cº`
   const fahrenheitTemperature = `${celsiusToFahrenheit(Math.trunc(data?.main?.feels_like))} Fº`
 
+  const [tempTomorrow, setTempTomorrow] = useState<string | boolean>('Cº')
+  const celsiusTemperatureTomorrow: number | string =
+    `${Math.trunc(dataNextDays?.list[0].main.feels_like)} Cº`
+  const fahrenheitTemperatureTomorrow = `${celsiusToFahrenheit(Math.trunc(dataNextDays?.list[0].main.feels_like))} Fº`
+  console.log('dfdfdf', dataNextDays)
+
+  const toggleTemp = () => {
+    setTemp((currentState) => !currentState)
+  }
+
   return (
     <>
       <div
@@ -28,12 +38,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
           <div>
             <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
-              <p
-                className="pb-8 text-4xl cursor-pointer"
-                onClick={() => {
-                  setTemp((currentState) => !currentState)
-                }}
-              >
+              <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp ? celsiusTemperature : fahrenheitTemperature}
               </p>
             )}
@@ -58,7 +63,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
         <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
           <div className="w-full">
             <p className="py-4 text-3xl">Amanhã</p>
-            {dataNextDays?.list[0].main.feels_like && (
+            {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl">
                 {Math.trunc(dataNextDays?.list[0].main.feels_like)} Cº
               </p>
