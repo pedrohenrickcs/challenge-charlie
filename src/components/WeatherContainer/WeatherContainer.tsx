@@ -4,8 +4,10 @@ import { isMobile } from '@/utils/getDevice'
 import React, { useState } from 'react'
 import { ContentData } from '@/types/WeatherContainer'
 import Icon from '@/assets/icons/icons'
+import { useTranslation } from 'react-i18next'
 
 export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
+  const { t } = useTranslation('common')
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
   const feelsLikeCelsius = data?.main?.feels_like
 
@@ -44,10 +46,10 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
 
           <h1 className="pb-4 text-5xl">{firstLetter}</h1>
           <p className="text-3xl leading-tight">
-            Vento: {data?.wind?.speed}Kmh
+            {t('afterTomorrow')}: {data?.wind?.speed}Kmh
           </p>
           <p className="text-3xl leading-tight">
-            Humidade: {data?.main?.humidity}%
+            {t('humidity')}: {data?.main?.humidity}%
           </p>
           <p className="text-3xl leading-tight">
             Pressão: {data?.main?.pressure}hPA
