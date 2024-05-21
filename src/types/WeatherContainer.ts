@@ -22,6 +22,7 @@ export interface RootContent {
   weather: Weather[]
   main: Main
   wind: Wind
+  name: string | undefined
 }
 
 export interface List {
@@ -46,4 +47,5 @@ export interface ContentData {
   data?: RootContent
   dataNextDays?: RootNextDays
   coordinates?: Coordinates
+  inputText?: string
 }

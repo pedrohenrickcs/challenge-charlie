@@ -1,7 +1,6 @@
-import { BackgroundWeather } from '@/utils/backgroundWeather'
 import { isMobile } from '@/utils/getDevice'
-import React from 'react'
 import { ContentData } from '@/types/WeatherContainer'
+import { BackgroundWeather } from '@/utils/BackgroundWeather'
 import Icon from '@/assets/icons/icons'
 
 export const WeatherNoLocation = ({ data }: ContentData) => {

@@ -8,7 +8,7 @@ import {
 } from '@/utils/celsiusToFahrenheit'
 import { isMobile } from '@/utils/getDevice'
 import { WeatherNoLocation } from './WeatherNoLocation'
-import { BackgroundWeather } from '@/utils/backgroundWeather'
+import { BackgroundWeather } from '@/utils/BackgroundWeather'
 import { t } from 'i18next'
 
 export const WeatherContainer = ({
