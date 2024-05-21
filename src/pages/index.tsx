@@ -68,8 +68,6 @@ const Home = ({ dataImage }: ContentImage) => {
       const target = event.target as HTMLInputElement
       const location = target.value
 
-      console.log('locaaa', location)
-
       setData(await openWeather(location))
       setDataNextDays(await openWeatherNextDays(location))
     }

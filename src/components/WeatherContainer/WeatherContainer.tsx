@@ -1,9 +1,10 @@
+import { useState } from 'react'
+import Icon from '@/assets/icons/icons'
+
+import { ContentData } from '@/types/WeatherContainer'
 import { BackgroundWeather } from '@/utils/backgroundWeather'
 import { celsiusToFahrenheit } from '@/utils/celsiusToFahrenheit'
 import { isMobile } from '@/utils/getDevice'
-import React, { useState } from 'react'
-import { ContentData } from '@/types/WeatherContainer'
-import Icon from '@/assets/icons/icons'
 import { WeatherNoLocation } from './WeatherNoLocation'
 
 export const WeatherContainer = ({
