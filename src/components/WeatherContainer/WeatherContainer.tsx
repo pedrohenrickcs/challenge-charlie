@@ -36,7 +36,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
         </div>
         <div className="container text-textSecondary text-center md:text-left font-medium">
           <div>
-            <p className="py-4 text-3xl">HOJE</p>
+            <p className="py-4 text-3xl">{t('today')}</p>
             {data?.main?.feels_like && (
               <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp ? celsiusTemperature : fahrenheitTemperature}
@@ -52,7 +52,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
             {t('humidity')}: {data?.main?.humidity}%
           </p>
           <p className="text-3xl leading-tight">
-            Pressão: {data?.main?.pressure}hPA
+            {t('pressure')}: {data?.main?.pressure}hPA
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
       >
         <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
           <div className="w-full">
-            <p className="py-4 text-3xl">Amanhã</p>
+            <p className="py-4 text-3xl">{t('tomorrow')}</p>
             {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl">
                 {Math.trunc(dataNextDays?.list[0].main.feels_like)} Cº
@@ -77,7 +77,7 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
       >
         <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
           <div className="w-full">
-            <p className="py-4 text-3xl">Depois de amanhã</p>
+            <p className="py-4 text-3xl">{t('afterTomorrow')}</p>
             {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl">
                 {Math.trunc(dataNextDays?.list[1].main.feels_like)} Cº
