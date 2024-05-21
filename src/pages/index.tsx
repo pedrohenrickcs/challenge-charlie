@@ -54,6 +54,11 @@ const Home = ({ dataImage }: ContentImage) => {
       }
       getData()
     }
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timer)
   }, [coordinates])
 
   const handleKey = async (
@@ -62,6 +67,8 @@ const Home = ({ dataImage }: ContentImage) => {
     if (event?.key === 'Enter') {
       const target = event.target as HTMLInputElement
       const location = target.value
+
+      console.log('locaaa', location)
 
       setData(await openWeather(location))
       setDataNextDays(await openWeatherNextDays(location))
@@ -73,8 +80,16 @@ const Home = ({ dataImage }: ContentImage) => {
   return (
     <>
       <Background data={dataImage} />
-      <SearchLocation defaultValue={location} handleKey={handleKey} />
-      <WeatherContainer data={data} dataNextDays={dataNextDays} />
+      <SearchLocation
+        defaultValue={location}
+        handleKey={handleKey}
+        coordinates={coordinates}
+      />
+      <WeatherContainer
+        data={data}
+        dataNextDays={dataNextDays}
+        coordinates={coordinates}
+      />
     </>
   )
 }

@@ -8,6 +8,7 @@ import Thunderstorm from './thunderstorm'
 import Snow from './snow'
 import Mist from './mist'
 import Compass from './compass'
+import Empty from './empty'
 
 import { IconType } from '@/types/Icon'
 
@@ -33,6 +34,8 @@ const Icon = ({ name, size, color, className }: IconType) => {
       return <Mist size={size} color={color} className={className} />
     case 'compass':
       return <Compass size={size} color={color} className={className} />
+    case 'empty':
+      return <Empty size={size} color={color} className={className} />
     default:
       return null
   }

@@ -30,11 +30,6 @@ export interface List {
   wind: Wind
 }
 
-export interface Coord {
-  lat: number
-  lon: number
-}
-
 export interface RootNextDays {
   cod: string
   message: number
@@ -42,7 +37,13 @@ export interface RootNextDays {
   list: List[]
 }
 
+export interface Coordinates {
+  latitude: number
+  longitude: number
+}
+
 export interface ContentData {
   data?: RootContent
   dataNextDays?: RootNextDays
+  coordinates?: Coordinates
 }

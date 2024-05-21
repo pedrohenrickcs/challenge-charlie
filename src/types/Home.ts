@@ -26,4 +26,5 @@ export interface Image {
 
 export interface ContentImage {
   dataImage: Image
+  coordinates?: Coordinates
 }

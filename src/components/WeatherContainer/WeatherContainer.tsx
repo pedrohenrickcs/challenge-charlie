@@ -4,8 +4,13 @@ import { isMobile } from '@/utils/getDevice'
 import React, { useState } from 'react'
 import { ContentData } from '@/types/WeatherContainer'
 import Icon from '@/assets/icons/icons'
+import { WeatherNoLocation } from './WeatherNoLocation'
 
-export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
+export const WeatherContainer = ({
+  data,
+  dataNextDays,
+  coordinates,
+}: ContentData) => {
   const firstLetter = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
   const feelsLikeCelsius = data?.main?.feels_like
 
@@ -20,7 +25,9 @@ export const WeatherContainer = ({ data, dataNextDays }: ContentData) => {
     setTemp((currentState) => !currentState)
   }
 
-  return (
+  return !coordinates && !data ? (
+    <WeatherNoLocation />
+  ) : (
     <>
       <div
         className={`flex flex-col md:flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
