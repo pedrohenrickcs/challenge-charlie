@@ -8,7 +8,7 @@ Certifique-se de ter o Node.js instalado na sua máquina.
 
 ## Instalação
 
-1. Clone este repositório:
+Clone este repositório:
 ```bash
 git clone https://github.com/seu-usuario/meu-projeto-nextjs.git
 ```
