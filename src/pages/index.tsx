@@ -12,10 +12,7 @@ import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { ContentImage, Coordinates, Location } from '@/types/Home'
 
 const Home = ({ dataImage }: ContentImage) => {
-  const [location, setLocation] = useState<Location>({
-    city: '',
-    state: ''
-  })
+  const [location, setLocation] = useState<Location>()
   const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState<boolean>(true)
