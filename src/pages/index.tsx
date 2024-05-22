@@ -1,24 +1,23 @@
 import '../styles/globals.css'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { useEffect, useState } from 'react'
 
-import Background from '../components/Background/Background'
-import Loading from '../components/Loading/Loading'
+import Background from '@/components/Background/Background'
+import Loading from '@/components/Loading/Loading'
 
-import { SearchLocation } from '../components/SearchLocation/SearchLocation'
-import { WeatherContainer } from '../components/WeatherContainer/WeatherContainer'
-import { openCage } from '../services/openCage'
-import { openWeather, openWeatherNextDays } from '../services/openWeather'
-import { ContentImage, Coordinates, Location } from '../types/Home'
+import { SearchLocation } from '@/components/SearchLocation/SearchLocation'
+import { WeatherContainer } from '@/components/WeatherContainer/WeatherContainer'
+import { openCage } from '@/services/openCage'
+import { openWeather, openWeatherNextDays } from '@/services/openWeather'
+import { ContentImage, Coordinates, Location } from '@/types/Home'
 
 const Home = ({ dataImage }: ContentImage) => {
   const [location, setLocation] = useState<Location>()
   const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [coordinates, setCoordinates] = useState<Coordinates>()
-
-  console.log('data', data)
+  const [coordinates, setCoordinates] = useState<Coordinates | null>(null)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -56,6 +55,11 @@ const Home = ({ dataImage }: ContentImage) => {
       }
       getData()
     }
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timer)
   }, [coordinates])
 
   const handleKey = async (
@@ -74,18 +78,31 @@ const Home = ({ dataImage }: ContentImage) => {
 
   return (
     <>
-      <Background data={dataImage} />
-      <SearchLocation defaultValue={location} handleKey={handleKey} />
-      <WeatherContainer data={data} dataNextDays={dataNextDays} />
+      <Background images={dataImage.images} />
+      <SearchLocation
+        defaultValue={location}
+        handleKey={handleKey}
+        coordinates={coordinates}
+      />
+      <WeatherContainer
+        data={data}
+        dataNextDays={dataNextDays}
+        coordinates={coordinates}
+      />
     </>
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }: never) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BING}`)
   const dataImage = await res.json()
 
-  return { props: { dataImage } }
+  return {
+    props: {
+      dataImage,
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  }
 }
 
 export default Home

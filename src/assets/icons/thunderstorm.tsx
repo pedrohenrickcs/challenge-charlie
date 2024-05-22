@@ -9,6 +9,7 @@ const Thunderstorm = ({ size = 24, color = 'currentColor', ...rest }) => {
       version="1.1"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
+      aria-hidden="true"
       {...rest}
     >
       <path

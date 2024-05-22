@@ -1,10 +1,8 @@
-export interface ContentBackgroundImage {
-  images: {
-    url: string
-    title: string
-  }[]
+export interface Image {
+  url: string
+  title: string
 }
 
 export interface ContentBackgroundData {
-  data: ContentBackgroundImage
+  images: Image[]
 }

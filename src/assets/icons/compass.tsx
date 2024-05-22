@@ -15,6 +15,7 @@ const Compass = ({
       viewBox="0 0 512 512"
       xmlSpace="preserve"
       className={className}
+      aria-hidden="true"
       {...rest}
     >
       <path
