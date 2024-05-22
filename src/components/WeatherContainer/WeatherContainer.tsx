@@ -40,7 +40,7 @@ export const WeatherContainer = ({
         </div>
         <div className="container text-textSecondary text-center md:text-left font-medium">
           <div>
-            <p className="py-4 text-3xl">{t('today')}</p>
+            <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
               <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp
@@ -52,13 +52,13 @@ export const WeatherContainer = ({
 
           <h1 className="pb-4 text-5xl">{descriptionCapitalize}</h1>
           <p className="text-3xl leading-tight">
-            {t('afterTomorrow')}: {data?.wind?.speed}Kmh
+            Vento: {data?.wind?.speed}Kmh
           </p>
           <p className="text-3xl leading-tight">
-            {t('humidity')}: {data?.main?.humidity}%
+            Humidade: {data?.main?.humidity}%
           </p>
           <p className="text-3xl leading-tight">
-            {t('pressure')}: {data?.main?.pressure}hPA
+            Pressão: {data?.main?.pressure}hPA
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export const WeatherContainer = ({
       >
         <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
           <div className="w-full">
-            <p className="py-4 text-3xl">{t('tomorrow')}</p>
+            <p className="py-4 text-3xl">Amanhã</p>
             {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp
@@ -89,7 +89,7 @@ export const WeatherContainer = ({
       >
         <div className="container text-textSecondary text-center md:w-1/2 md:text-left">
           <div className="w-full">
-            <p className="py-4 text-3xl">{t('afterTomorrow')}</p>
+            <p className="py-4 text-3xl">Depois de amanhã</p>
             {dataNextDays?.list[1].main.feels_like && (
               <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp
