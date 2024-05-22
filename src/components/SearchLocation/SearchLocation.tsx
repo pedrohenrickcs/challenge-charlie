@@ -17,6 +17,10 @@ export const SearchLocation: React.FC<ContentSearch> = ({
       <input
         type="text"
         className="block w-full py-6 pr-4 pl-24 text-4xl outline-none text-textPrimary font-medium"
+        onFocus={(e) => {
+          const target = e.target as HTMLInputElement
+          target.value = ''
+        }}
         placeholder={textInput}
         defaultValue={
           coordinates ? `${defaultValue?.city}, ${defaultValue?.state}` : ''
