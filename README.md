@@ -74,3 +74,7 @@ Tailwind CSS
 Axios
 Jest
 ```
+
+## Deploy com Github Actions
+
+Foi utilizado Github Actions para realizar o deploy. Para acessar basta acessar a url: [Charlie Challenge](https://pedrohenrickcs.github.io/challenge-charlie/)
