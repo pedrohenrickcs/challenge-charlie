@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { useEffect, useState } from 'react'
 
@@ -13,7 +12,10 @@ import { openWeather, openWeatherNextDays } from '@/services/openWeather'
 import { ContentImage, Coordinates, Location } from '@/types/Home'
 
 const Home = ({ dataImage }: ContentImage) => {
-  const [location, setLocation] = useState<Location>()
+  const [location, setLocation] = useState<Location>({
+    city: '',
+    state: ''
+  })
   const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -57,7 +59,7 @@ const Home = ({ dataImage }: ContentImage) => {
     }
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [coordinates])
@@ -93,14 +95,13 @@ const Home = ({ dataImage }: ContentImage) => {
   )
 }
 
-export async function getStaticProps({locale}: never) {
+export async function getStaticProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BING}`)
   const dataImage = await res.json()
 
   return {
     props: {
       dataImage,
-      ...(await serverSideTranslations(locale!, ['index', 'common'])),
     },
   }
 }

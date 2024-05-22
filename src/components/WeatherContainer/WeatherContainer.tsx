@@ -9,7 +9,6 @@ import {
 import { isMobile } from '@/utils/getDevice'
 import { WeatherNoLocation } from './WeatherNoLocation'
 import { BackgroundWeather } from '@/utils/BackgroundWeather'
-import { useTranslation } from 'react-i18next'
 
 export const WeatherContainer = ({
   data,
@@ -18,16 +17,13 @@ export const WeatherContainer = ({
 }: ContentData) => {
   const [temp, setTemp] = useState<string | boolean>('Cº')
 
-  const { t } = useTranslation('common')
   const descriptionCapitalize = `${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.substring(1)}`
 
   const toggleTemp = () => {
     setTemp((currentState) => !currentState)
   }
 
-  return !coordinates && !data ? (
-    <WeatherNoLocation />
-  ) : (
+  return coordinates && data ? (
     <>
       <div
         className={`flex flex-col md:flex-row justify-around pt-4 pb-4 bg-opacity-60 ${BackgroundWeather(data?.main?.feels_like)}`}
@@ -41,7 +37,7 @@ export const WeatherContainer = ({
         </div>
         <div className="container text-textSecondary text-center md:text-left font-medium">
           <div>
-              <p className="py-4 text-3xl">{t('today')}</p>
+            <p className="py-4 text-3xl">HOJE</p>
             {data?.main?.feels_like && (
               <p className="pb-8 text-4xl cursor-pointer" onClick={toggleTemp}>
                 {temp
@@ -106,5 +102,7 @@ export const WeatherContainer = ({
         </div>
       </div>
     </>
+  ) : (
+    <WeatherNoLocation />
   )
 }

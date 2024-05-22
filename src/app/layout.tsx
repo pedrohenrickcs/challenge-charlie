@@ -8,8 +8,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className={`${inter.className} container mx-auto px-4 m-4`}>
-      {children}
-    </div>
+    <>
+      <title>Challenge Charlie</title>
+      <meta name="Challenge Charlie" content="Criado por Pedro Henrick" />
+      <div className={`${inter.className} container mx-auto px-4 m-4`}>
+        {children}
+      </div>
+    </>
   )
 }
