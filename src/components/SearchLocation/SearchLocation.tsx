@@ -19,7 +19,7 @@ export const SearchLocation: React.FC<ContentSearch> = ({
         className="block w-full py-6 pr-4 pl-24 text-4xl outline-none text-textPrimary font-medium"
         placeholder={textInput}
         defaultValue={
-          coordinates && `${defaultValue?.city}, ${defaultValue?.state}`
+          coordinates ? `${defaultValue?.city}, ${defaultValue?.state}` : ''
         }
         onKeyUp={handleKey}
       />

@@ -7,11 +7,8 @@ export interface Coordinates {
   latitude: number
   longitude: number
 }
-
 export interface ContentSearch {
   defaultValue: Location | undefined
-  handleKey: (
-    event: React.KeyboardEvent<HTMLInputElement>,
-  ) => Promise<void> | void
-  coordinates?: Coordinates
+  handleKey: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  coordinates: Coordinates | null
 }

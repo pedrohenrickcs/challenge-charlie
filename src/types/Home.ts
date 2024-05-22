@@ -2,6 +2,7 @@ export interface Coordinates {
   latitude: number
   longitude: number
 }
+
 export interface Location {
   city: string
   state: string
@@ -26,5 +27,4 @@ export interface Image {
 
 export interface ContentImage {
   dataImage: Image
-  coordinates?: Coordinates
 }

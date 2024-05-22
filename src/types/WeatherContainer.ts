@@ -46,6 +46,6 @@ export interface Coordinates {
 export interface ContentData {
   data?: RootContent
   dataNextDays?: RootNextDays
-  coordinates?: Coordinates
+  coordinates?: Coordinates | null
   inputText?: string
 }

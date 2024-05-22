@@ -17,8 +17,7 @@ const Home = ({ dataImage }: ContentImage) => {
   const [data, setData] = useState()
   const [dataNextDays, setDataNextDays] = useState()
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [coordinates, setCoordinates] = useState<Coordinates>()
-  const [validInput, setValidInput] = useState<string>()
+  const [coordinates, setCoordinates] = useState<Coordinates | null>(null)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -70,12 +69,8 @@ const Home = ({ dataImage }: ContentImage) => {
       const target = event.target as HTMLInputElement
       const location = target.value
 
-      setValidInput(location)
-
-      if (validInput) {
-        setData(await openWeather(location))
-        setDataNextDays(await openWeatherNextDays(location))
-      }
+      setData(await openWeather(location))
+      setDataNextDays(await openWeatherNextDays(location))
     }
   }
 
@@ -83,7 +78,7 @@ const Home = ({ dataImage }: ContentImage) => {
 
   return (
     <>
-      <Background data={dataImage} />
+      <Background images={dataImage.images} />
       <SearchLocation
         defaultValue={location}
         handleKey={handleKey}
