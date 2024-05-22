@@ -5,6 +5,8 @@ export default function Document() {
     <Html lang="pt-br">
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <title>Challenge Charlie</title>
+        <meta name="Challenge Charlie" content="Criado por Pedro Henrick" />
       </Head>
       <body>
         <Main />
