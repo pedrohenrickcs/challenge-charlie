@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { useEffect, useState } from 'react'
 
@@ -92,13 +93,14 @@ const Home = ({ dataImage }: ContentImage) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}: never) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BING}`)
   const dataImage = await res.json()
 
   return {
     props: {
       dataImage,
+      ...(await serverSideTranslations(locale!, ['index', 'common'])),
     },
   }
 }
