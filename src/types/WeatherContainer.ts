@@ -15,7 +15,6 @@ export interface Main {
 
 export interface Wind {
   speed: number
-  deg: number
 }
 
 export interface RootContent {
@@ -32,9 +31,6 @@ export interface List {
 }
 
 export interface RootNextDays {
-  cod: string
-  message: number
-  cnt: number
   list: List[]
 }
 

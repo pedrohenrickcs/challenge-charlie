@@ -5,3 +5,5 @@ export const Weather = {
   WeatherContainer,
   WeatherNoLocation,
 }
+
+export { WeatherContainer }
