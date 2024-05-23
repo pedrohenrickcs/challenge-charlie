@@ -2,8 +2,6 @@
 
 [[English](README.md) | [Portuguese](README.pt.md)]
 
-# Charlie Challie 
-
 This is a Next.js 14 project configured with TypeScript, Tailwind CSS, Axios and Jest.
 
 ## Prerequisites
