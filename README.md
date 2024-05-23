@@ -14,7 +14,7 @@ Make sure you have Node.js installed on your machine.
 
 Clone this repository:
 ```bash
-git clone https://github.com/seu-usuario/meu-projeto-nextjs.git
+git clone https://github.com/seu-usuario/challenge-charlie.git
 ```
 ### Navigate to the project directory
 
@@ -82,6 +82,7 @@ Jest
 ## Deploy com Github Actions
 
 Github Actions was used to perform the deployment. To access, simply access the URL: [Charlie Challenge](https://pedrohenrickcs.github.io/challenge-charlie/)
+> The repository must be public
 
 ## Docker
 Compile the container
@@ -96,3 +97,5 @@ docker run -p 3000:3000 challange-charlie
 
 The project will be available at http://localhost:3000.
 
+---
+⌨️ with ❤️ for [Pedro Henrick](https://www.linkedin.com/in/pedro-henrickcs) 😊
