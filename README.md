@@ -6,9 +6,11 @@ Este é um projeto Next.js 14 configurado com TypeScript, Tailwind CSS, Axios e 
 
 Certifique-se de ter o Node.js instalado na sua máquina.
 
+> node: v20.12.2
+
 ## Instalação
 
-1. Clone este repositório:
+Clone este repositório:
 ```bash
 git clone https://github.com/seu-usuario/meu-projeto-nextjs.git
 ```
@@ -40,12 +42,12 @@ O projeto estará disponível em http://localhost:3000.
 ### No diretório do projeto, você pode executar os seguintes scripts:
 
 ```bash
-dev: Inicia o servidor de desenvolvimento.
-build: Compila o projeto para produção.
-start: Inicia o servidor de produção.
-lint: Verifica os problemas relacionados ao lint
-test: Executa os testes unitários.
-test:watch: Executa os testes unitários assistido.
+> dev: Inicia o servidor de desenvolvimento.
+> build: Compila o projeto para produção.
+> start: Inicia o servidor de produção.
+> lint: Verifica os problemas relacionados ao lint
+> test: Executa os testes unitários.
+> test:watch: Executa os testes unitários assistido.
 ```
 
 ## Estrutura do Projeto
@@ -78,3 +80,16 @@ Jest
 ## Deploy com Github Actions
 
 Foi utilizado Github Actions para realizar o deploy. Para acessar basta acessar a url: [Charlie Challenge](https://pedrohenrickcs.github.io/challenge-charlie/)
+
+## Docker
+Compilar o container
+```bash
+docker build -t challange-charlie .
+```
+
+Rodar aplicação:
+```bash
+docker run -p 3000:3000 challange-charlie
+```
+
+O projeto estará disponível em http://localhost:3000.
