@@ -32,9 +32,9 @@ yarn install
 ### Para iniciar o servidor de desenvolvimento, execute o seguinte comando:
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
 ```
 

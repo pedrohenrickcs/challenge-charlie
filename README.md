@@ -25,7 +25,7 @@ cd challenge-charlie
 ### Install dependencies
 ```bash
 npm install
-#ou
+#or
 yarn install
 ```
 
