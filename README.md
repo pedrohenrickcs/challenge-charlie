@@ -1,33 +1,37 @@
+# <img src="https://avatars1.githubusercontent.com/u/7063040?v=4&s=200.jpg" alt="HU" width="24" /> Charlie Challenge
+
+[[English](README.md) | [Portuguese](README.pt.md)]
+
 # Charlie Challie 
 
-Este é um projeto Next.js 14 configurado com TypeScript, Tailwind CSS, Axios e Jest.
+This is a Next.js 14 project configured with TypeScript, Tailwind CSS, Axios and Jest.
 
-## Pré-requisitos
+## Prerequisites
 
-Certifique-se de ter o Node.js instalado na sua máquina.
+Make sure you have Node.js installed on your machine.
 
 > node: v20.12.2
 
 ## Instalação
 
-Clone este repositório:
+Clone this repository:
 ```bash
 git clone https://github.com/seu-usuario/meu-projeto-nextjs.git
 ```
-### Navegue até o diretório do projeto:
+### Navigate to the project directory
 
 ```bash
 cd challenge-charlie
 ```
 
-### Instale as dependências:
+### Install dependencies
 ```bash
 npm install
 #ou
 yarn install
 ```
 
-### Para iniciar o servidor de desenvolvimento, execute o seguinte comando:
+### To start the development server, run the following command
 ```bash
 npm run dev
 # or
@@ -36,38 +40,38 @@ yarn dev
 pnpm dev
 ```
 
-O projeto estará disponível em http://localhost:3000.
+The project will be available at http://localhost:3000.
 
-## Scripts Disponíveis
-### No diretório do projeto, você pode executar os seguintes scripts:
+## Available Scripts
+### In the project directory, you can run the following scripts
 
 ```bash
-> dev: Inicia o servidor de desenvolvimento.
-> build: Compila o projeto para produção.
-> start: Inicia o servidor de produção.
-> lint: Verifica os problemas relacionados ao lint
-> test: Executa os testes unitários.
-> test:watch: Executa os testes unitários assistido.
+> dev: Starts the development server.
+> build: Compiles the project for production.
+> start: Starts the production server.
+> lint: Checks for lint-related issues
+> test: Runs unit tests.
+> test:watch: Runs unit tests watched.
 ```
 
-## Estrutura do Projeto
-### A estrutura de pastas do projeto é a seguinte:
+## Project Structure
+### The project folder structure is as follows
 ```bash
-├── app/                 # páginas
-├── assets/              # Armazena arquivos estáticos
-├── components/          # Componentes reutilizáveis
-├── pages/               # Páginas da aplicação
-├── services/            # Centraliza as APIs
-├── styles/              # Estilos globais e locais
-├── types/               # Armazena definições de tipos TypeScript
-├── utils/               # Funções utilitárias e helpers
-├── .gitignore           # Arquivos a serem ignorados pelo Git
-├── jest.config.js       # Configurações do Jest
-├── next.config.js       # Configurações do Next.js
-├── package.json         # Arquivo de manifesto do projeto
-└── tsconfig.json        # Configurações do TypeScript
+├── app/              # pages
+├── assets/           # Store static files
+├── components/       # Reusable components
+├── pages/            # Application pages
+├── services/         # Centralizes APIs
+├── styles/           # Global and local styles
+├── types/            # Stores TypeScript type definitions
+├── utils/            # Utility functions and helpers
+├── .gitignore        # Files to be ignored by Git
+├── jest.config.js    # Jest Settings
+├── next.config.js    # Next.js Settings
+├── package.json      # Project manifest file
+└── tsconfig.json     # TypeScript Settings
 ```
-## Tecnologias Utilizadas
+## Technologies Used
 
 ```bash
 Next.js 14
@@ -79,17 +83,17 @@ Jest
 
 ## Deploy com Github Actions
 
-Foi utilizado Github Actions para realizar o deploy. Para acessar basta acessar a url: [Charlie Challenge](https://pedrohenrickcs.github.io/challenge-charlie/)
+Github Actions was used to perform the deployment. To access, simply access the URL: [Charlie Challenge](https://pedrohenrickcs.github.io/challenge-charlie/)
 
 ## Docker
-Compilar o container
+Compile the container
 ```bash
 docker build -t challange-charlie .
 ```
 
-Rodar aplicação:
+Rotate application
 ```bash
 docker run -p 3000:3000 challange-charlie
 ```
 
-O projeto estará disponível em http://localhost:3000.
+The project will be available at http://localhost:3000.
